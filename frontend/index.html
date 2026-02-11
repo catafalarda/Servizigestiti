@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Managed Services Checklist</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Managed Services Checklist</h1>
+      <div id="user-info"></div>
+    </header>
+
+    <main>
+      <section id="login-view" class="card">
+        <h2>Login</h2>
+        <form id="login-form">
+          <label>Username <input id="username" required /></label>
+          <label>Password <input id="password" type="password" required /></label>
+          <button type="submit">Accedi</button>
+        </form>
+        <p class="hint">Demo: manager/manager123, leader/leader123, operatore1/operator123</p>
+      </section>
+
+      <section id="manager-view" class="hidden">
+        <div class="card">
+          <h2>Dashboard Service Manager / Team Leader</h2>
+          <label>Giorno operativo <input id="manager-day" type="date" /></label>
+        </div>
+
+        <div class="grid-two">
+          <div class="card">
+            <h3>Crea attività</h3>
+            <form id="activity-form">
+              <label>Titolo <input id="a-title" required /></label>
+              <label>Descrizione <textarea id="a-description"></textarea></label>
+              <label>Tipologia
+                <select id="a-kind">
+                  <option value="programmed">Programmata</option>
+                  <option value="specific">Specifica</option>
+                </select>
+              </label>
+              <label>Frequenza
+                <select id="a-frequency">
+                  <option value="daily">Giornaliera</option>
+                  <option value="weekly">Settimanale</option>
+                  <option value="monthly">Mensile</option>
+                  <option value="recurring">Ricorrente</option>
+                  <option value="none">Nessuna</option>
+                </select>
+              </label>
+              <label>Data riferimento <input id="a-reference-date" type="date" /></label>
+              <label>Data specifica <input id="a-specific-date" type="date" /></label>
+              <label>Data inizio periodo <input id="a-start-date" type="date" /></label>
+              <label>Data fine periodo <input id="a-end-date" type="date" /></label>
+              <label>Ogni N giorni <input id="a-every-days" type="number" min="1" value="1" /></label>
+              <button type="submit">Salva attività</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Assegnazioni giornaliere</h3>
+            <button id="load-day-activities">Carica attività del giorno</button>
+            <div id="day-activities"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="operator-view" class="hidden">
+        <div class="card">
+          <h2>Lista attività giornaliera Operatore</h2>
+          <label>Data <input id="operator-day" type="date" /></label>
+          <button id="load-operator-tasks">Aggiorna lista</button>
+        </div>
+        <div id="operator-tasks"></div>
+      </section>
+    </main>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
