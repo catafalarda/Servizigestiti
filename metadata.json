@@ -1,0 +1,5 @@
+{
+  "name": "ServiceCheck - Operational Checklist for Managed Services",
+  "description": "A structural MVP for managing daily operational checklists in Managed Services environments, featuring task scheduling, assignment dashboard, and execution tracking with audit logs.",
+  "requestFramePermissions": []
+}

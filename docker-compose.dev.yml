@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  # Backend API Server (Development)
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: servicecheck-backend-dev
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      HOST: 0.0.0.0
+      MONGODB_URI: mongodb://${MONGODB_USER:-admin}:${MONGODB_PASSWORD:-password123}@${MONGODB_HOST:-mongodb-vm}:${MONGODB_PORT:-27017}/${MONGODB_DB:-servicecheck}?authSource=admin
+      JWT_SECRET: ${JWT_SECRET:-your_super_secret_jwt_key_change_this}
+      JWT_EXPIRE: ${JWT_EXPIRE:-7d}
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+    ports:
+      - "${BACKEND_PORT:-5000}:5000"
+    volumes:
+      - ./server/src:/app/src
+      - /app/node_modules
+    networks:
+      - servicecheck-network-dev
+    restart: unless-stopped
+
+networks:
+  servicecheck-network-dev:
+    driver: bridge
